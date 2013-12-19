@@ -1,0 +1,31 @@
+<% if @posts.any? %>
+    <h2>Posts:</h2>
+<% else %>
+  	<strong>В данный момент, эта страница пуста!</strong>
+  	<p>
+  		<%= link_to 'Create New', new_post_path %>	
+	</p>
+<% end %>
+<%= flash[:notice] %>
+<% @posts.each do |post| %>
+  
+	<div class="title">
+		<%= post.title %>
+	</div>
+	<div class="text">
+		<%= post.text %>
+	</div>
+
+	<% if admin? %>
+		<div class="delButton">
+			<%= link_to 'Delete', post_path(post), method: :delete, 
+									data: {confirm: "Really?"} %>
+		</div>
+	<% end %>
+	
+	<div class="showButton">
+		<%= link_to "Show", post %>
+	</div>
+  
+
+<% end %>
