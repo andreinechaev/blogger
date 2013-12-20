@@ -6,26 +6,31 @@
   		<%= link_to 'Create New', new_post_path %>	
 	</p>
 <% end %>
+
 <%= flash[:notice] %>
+
 <% @posts.each do |post| %>
-  
+ <div class="posts"> 
 	<div class="title">
-		<%= post.title %>
-	</div>
-	<div class="text">
-		<%= post.text %>
+		<%= link_to post.title, post %>
 	</div>
 
-	<% if admin? %>
-		<div class="delButton">
-			<%= link_to 'Delete', post_path(post), method: :delete, 
-									data: {confirm: "Really?"} %>
-		</div>
-	<% end %>
-	
-	<div class="showButton">
-		<%= link_to "Show", post %>
+	<div class="text">
+		<%= simple_format(post.text.truncate(200)) %>
 	</div>
+	   <ul>
+		<% if admin? %>
+			<div id="editButton" class="buttons">
+				<li><%= link_to 'Edit', edit_post_path(post) %></li>
+			</div>
+		   <div id="delButton" class="buttons">
+			<li><%= link_to 'Delete', post_path(post), method: :delete, 
+										data: {confirm: "Really?"} %></li>
+			</div>
+
+		<% end %>
+		</ul>
+</div>
   
 
 <% end %>

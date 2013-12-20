@@ -1,6 +1,6 @@
 <div class="article">
 	<h2><%= @post.title %></h2>
 
-	<p><%= @post.text %></p>
+	<p><%= simple_format(@post.text) %></p>
 </div>
 <p class="navButton"><%= link_to "All Posts", posts_path %></p>

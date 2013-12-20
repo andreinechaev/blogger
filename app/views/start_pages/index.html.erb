@@ -1,4 +1,11 @@
 <% @posts.each do |post| %>
-<h3><%= post.title %></h3>
-<p><%= post.text %></p>
+  <div class="posts">
+    <div class="title">
+		<%= link_to post.title, post %>
+	</div>
+
+	<div class="text">
+		<%= simple_format(post.text.truncate(200)) %>
+	</div>
+  </div>
 <% end %>

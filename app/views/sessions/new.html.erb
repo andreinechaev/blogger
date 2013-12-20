@@ -1,4 +1,5 @@
-<%= form_tag sessions_path do %>
-Password: <%= text_field_tag :password %>
-<% end %>
-
+<div id="login">
+	<%= form_tag sessions_path do %>
+	Password: <span id="label"><%= text_field_tag :password %></span>
+	<% end %>
+</div>
